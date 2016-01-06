@@ -1,4 +1,7 @@
 source "https://rubygems.org"
+
+ruby '2.2.2'
+
 gem "rails", "4.2.0"
 gem "pg"
 gem "sass-rails", "~> 5.0"
@@ -15,13 +18,13 @@ gem "paperclip"
 gem "bootstrap_form"
 gem "font-awesome-rails"
 gem "therubyracer"
-gem "less-rails"
 gem "twitter-bootstrap-rails"
 gem "faker"
 gem "responders"
 gem "traceroute"
 gem "rails_12factor", group: :production
 gem "populator"
+gem 'less-rails', github: 'metaskills/less-rails', branch: 'master'
 
 group :development, :test do
   gem "pry-rails"
