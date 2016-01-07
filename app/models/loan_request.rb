@@ -82,7 +82,7 @@ class LoanRequest < ActiveRecord::Base
 
   def related_projects
     projects = LoanRequest.where(category: self.category)
-      .order("RANDOM()")
       .limit(4)
+      .order("RANDOM()")
   end
 end
