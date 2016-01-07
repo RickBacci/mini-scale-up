@@ -1,9 +1,6 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <div class="text-center">
-        <%= paginate @loan_requests, :theme => 'twitter-bootstrap-3' %>
-      </div>
       <% cache do %>
         <% @loan_requests.each do |loan_request| %>
           <% cache loan_request do %>
@@ -31,9 +28,6 @@
           <% end %>
         <% end %>
       <% end %>
-      <div class="text-center">
-        <%= paginate @loan_requests, :theme => 'twitter-bootstrap-3' %>
-      </div>
     </div>
   </div>
 </div>
