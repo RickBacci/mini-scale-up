@@ -27,6 +27,9 @@ gem "populator"
 gem 'less-rails', github: 'metaskills/less-rails', branch: 'master'
 gem 'newrelic_rpm'
 
+gem 'kaminari'
+gem 'bootstrap-kaminari-views'
+
 group :development, :test do
   gem "pry-rails"
   gem "awesome_print"
