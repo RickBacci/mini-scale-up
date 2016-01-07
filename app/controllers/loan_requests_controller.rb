@@ -3,6 +3,7 @@ class LoanRequestsController < ApplicationController
 
   def index
     @loan_requests = LoanRequest.all
+    @loan_requests = LoanRequest.page params[:page]
   end
 
   def create
