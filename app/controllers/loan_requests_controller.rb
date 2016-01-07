@@ -9,17 +9,12 @@ class LoanRequestsController < ApplicationController
     loan_request = current_user.loan_requests.new(loan_request_params)
 
     if loan_request.save
-      Category.find_by(title: params[:loan_request][:category]).loan_requests << loan_request
       flash[:notice] = "Loan Request Created"
       redirect_to(:back)
     else
       flash[:error] = loan_request.errors.full_messages.to_sentence
       redirect_to(:back)
     end
-  end
-
-  def edit
-    # @loan_request = LoanRequest.find(params[:id])
   end
 
   def show
@@ -46,7 +41,8 @@ class LoanRequestsController < ApplicationController
                                          :image_url,
                                          :repayment_begin_date,
                                          :repayment_rate,
-                                         :amount)
+                                         :amount,
+                                         :category)
   end
 
   def set_loan_request
