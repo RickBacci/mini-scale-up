@@ -81,8 +81,20 @@ class LoanRequest < ActiveRecord::Base
   end
 
   def related_projects
-    projects = LoanRequest.where(category: self.category)
-      .limit(4)
-      .order("RANDOM()")
+    cache_name = "related_projects-#{id}"
+    if cache_empty?(cache_name)
+      projects = LoanRequest
+        .where(category: self.category)
+        .limit(16)
+      Rails.cache.write(cache_name, projects, expires_in: 48.hours)
+    end
+
+    Rails.cache.fetch(cache_name).shuffle.take(4)
+  end
+
+  private
+
+  def cache_empty?(key)
+    Rails.cache.fetch(key).nil?
   end
 end

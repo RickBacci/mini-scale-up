@@ -22,7 +22,7 @@
             </tr>
           </thead>
           <tbody>
-            <% cache do %>
+            <% cache "lender_projects-#{@lender.id}" do %>
               <% @lender.projects.each do |project| %>
                 <tr>
                   <% cache project, expires_in: 60.minutes do %>
