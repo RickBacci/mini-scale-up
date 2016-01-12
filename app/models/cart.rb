@@ -12,7 +12,7 @@ class Cart
 
   def cart_items_and_amount
     loan_request = Hash.new
-    cart_items.select { |loan_request_id, amount| loan_request[LoanRequest.find(loan_request_id)] = amount }
+    cart_items.select { |loan_request_id, amount| loan_request[find_loan_request(loan_request_id)] = amount }
     loan_request
   end
 
@@ -30,5 +30,11 @@ class Cart
     else
       @cart_items.delete(loan_request_id)
     end
+  end
+
+  private
+
+  def find_loan_request(loan_request_id)
+    LoanRequest.find(loan_request_id)
   end
 end

@@ -23,13 +23,13 @@ class Order < ActiveRecord::Base
 
   def cart_item_and_quantity
     loan_requests = Hash.new
-    cart_items.select { |loan_id, amount| loan_requests[LoanRequest.find(loan_id)] = amount }
+    cart_items.select { |loan_id, amount| loan_requests[LoanRequest.includes(:user).find(loan_id)] = amount }
     loan_requests
   end
 
   def find_loan_requests
     cart_item_and_quantity.keys.map do |loan_request|
-      LoanRequest.find(loan_request.id)
+      LoanRequest.includes(:user).find(loan_request.id)
     end
   end
 
